@@ -10,7 +10,7 @@ import ConfirmModal from "../../components/ConfirmModal/ConfirmModal";
 import { toast } from "react-toastify";
 import { useBalance } from "../../components/BalanceBar/useBalance";
 
-interface Group {
+export interface Group {
   id: number;
   name: string;
   ownerId: number;

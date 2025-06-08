@@ -13,6 +13,7 @@ import HomePage from "../components/HomePage/HomePage";
 import PrivateRoute from "../components/Route/PrivateRoute";
 import PublicRoute from "../components/Route/PublicRoute";
 import BalanceBar from "../components/BalanceBar/BalanceBar";
+import GroupMembersRouteWrapper from "../pages/GroupsPage/GroupMembersRouteWrapper";
 import GroupDebtsPage from "../pages/GroupsPage/GroupDebtPage";
 import GroupsPage from "../pages/GroupsPage/GroupsPage";
 
@@ -48,7 +49,16 @@ const App: React.FC = () => {
               </PrivateRoute>
             }
           />
-          <Route path="/groups/:groupId/debts" element={<GroupDebtsPage />} />
+            <Route
+                path="/groups/:groupId/members"
+                element={
+                    <PrivateRoute>
+                        <GroupMembersRouteWrapper />
+                    </PrivateRoute>
+                }
+            />
+
+            <Route path="/groups/:groupId/debts" element={<GroupDebtsPage />} />
           <Route path="/test" element={<TestApiComponent />} />
           <Route
             path="/register"

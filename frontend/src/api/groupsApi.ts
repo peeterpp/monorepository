@@ -13,6 +13,7 @@ export const groupsApi = {
   `;
     const response = await graphqlClient(query);
     return response.data.myGroups;
+
   },
 
   createGroup: async (name: string) => {
@@ -138,4 +139,19 @@ export const groupsApi = {
   `;
     return graphqlClient(mutation, { debtId });
   },
+
+  getGroupById: async (groupId: number) => {
+    const query = `
+    query($id: ID!) {
+      group(id: $id) {
+        id
+        name
+        ownerId
+      }
+    }
+  `;
+    const response = await graphqlClient(query, { id: groupId });
+    return response.data.group;
+  },
+
 };
