@@ -2,6 +2,7 @@ package com.example.pasir_polinski_piotr.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class Group {
     private User owner;
 
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Membership> memberships;
 
 }

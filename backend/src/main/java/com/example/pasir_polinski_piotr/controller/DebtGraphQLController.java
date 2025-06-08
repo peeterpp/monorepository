@@ -12,6 +12,7 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class DebtGraphQLController {
@@ -27,12 +28,13 @@ public class DebtGraphQLController {
     @QueryMapping
     public List<Debt> groupDebts(@Argument Long groupId) {
         return debtService.getGroupDebts(groupId).stream()
-                .peek(debt -> {
+                .map(debt -> {
                     if (debt.getTitle() == null) {
                         debt.setTitle("Brak opisu");
                     }
+                    return debt;
                 })
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @MutationMapping
