@@ -10,9 +10,9 @@ public class TestController {
     public String test() {
         return "Hello World";
     }
+
     @GetMapping("/api/info")
     public AppInfo getInfo() {
-        return new AppInfo("Aplikacja Budżetowa","1.0", "Witaj w aplikacji budżetowej stworzonej ze Spring Boot!");
+        return new AppInfo("Aplikacja Budżetowa", AppInfo.getAppVersion(), AppInfo.getMessage());
     }
-
 }
