@@ -13,6 +13,6 @@ public class TestController {
 
     @GetMapping("/api/info")
     public AppInfo getInfo() {
-        return new AppInfo("Aplikacja Budżetowa", AppInfo.getAppVersion(), AppInfo.getMessage());
+        return new AppInfo("Aplikacja Budżetowa");
     }
 }
